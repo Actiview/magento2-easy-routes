@@ -37,6 +37,7 @@ To add multiple (multi-language) paths for the same ID use this sample:
                     <item name="voorbeeldpagina" xsi:type="null"/>
                     <item name="page-d-exemple" xsi:type="null"/>
                     <item name="beispielseite" xsi:type="null"/>
+                    <item name="pagina-de-muestra" xsi:type="null"/>
                 </item>
             </argument>
         </arguments>
@@ -49,6 +50,7 @@ Now the new route is available for the router and the page can be visited:
 * https://domain.tld/voorbeeldpagina
 * https://domain.tld/page-d-exemple
 * https://domain.tld/beispielseite
+* https://domain.tld/pagina-de-muestra
 
 When one of these pages is visited an additional layout handle will be added: `easy_routes_id_sample-page`. This can be used to apply additional or custom templating. 
 
