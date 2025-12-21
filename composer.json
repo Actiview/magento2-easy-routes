@@ -1,0 +1,17 @@
+{
+    "name": "actiview/magento2-easy-routes",
+    "description": "Create multi-language custom routes with ease",
+    "version": "1.0.0",
+    "type": "magento2-module",
+    "require": {
+        "magento/framework": "103.0.*"
+    },
+    "autoload": {
+        "files": [
+            "src/registration.php"
+        ],
+        "psr-4": {
+            "Actiview\\EasyRoutes\\": ["src/"]
+        }
+    }
+}
