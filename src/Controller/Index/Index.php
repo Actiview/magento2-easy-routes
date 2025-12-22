@@ -18,14 +18,12 @@ class Index implements HttpGetActionInterface
 
     public function execute(): ResultInterface
     {
-        $id = $this->request->getParam('id');
+        $routeId = $this->request->getParam('route_id');
         $page = $this->pageFactory->create();
-
-        $page->addPageLayoutHandles([
-            'id' => $id,
-        ], 'easy_routes');
-
-        $page->getConfig()->addBodyClass('easy_routes_'.$id);
+        
+        $page->addHandle('easy_routes');
+        $page->addHandle('easy_routes_'.$routeId);
+        $page->getConfig()->addBodyClass('easy_routes_'.$routeId);
 
         return $page;
     }

@@ -4,29 +4,25 @@ declare(strict_types=1);
 
 namespace Actiview\EasyRoutes\Model;
 
+use Actiview\EasyRoutes\Api\Data\EasyRouteInterface;
+
 class EasyRoutesPool
 {
     public function __construct(
         private array $routes = [],
     ) {}
 
-    public function getEasyRouteId(string $requestPath): ?string
+    public function resolveEasyRoute(string $requestPath): ?EasyRouteInterface
     {
-        if (array_key_exists($requestPath, $this->routes)) {
-            return $this->transformId($requestPath);
-        }
-
-        foreach ($this->routes as $route => $paths) {
-            if (array_key_exists($requestPath, $paths)) {
-                return $this->transformId($route);
+        foreach ($this->routes as $easyRoute) {
+            if (
+                $easyRoute instanceof EasyRouteInterface
+                && $easyRoute->matches($requestPath)
+            ) {
+                return $easyRoute;
             }
         }
 
         return null;
-    }
-
-    private function transformId(string $requestPath): string
-    {
-        return str_replace('/', '-', $requestPath);
     }
 }

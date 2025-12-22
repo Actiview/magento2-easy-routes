@@ -27,9 +27,9 @@ class Router implements RouterInterface
     {
         /** @var HttpRequest $request */
         $requestPath = trim($request->getPathInfo(), '/');
-        $id = $this->easyRoutesPool->getEasyRouteId($requestPath);
+        $easyRoute = $this->easyRoutesPool->resolveEasyRoute($requestPath);
 
-        if (!$id) {
+        if (!$easyRoute) {
             return null;
         }
 
@@ -37,7 +37,7 @@ class Router implements RouterInterface
             ->setModuleName('easy_routes')
             ->setControllerName('index')
             ->setActionName('index')
-            ->setParam('id', $id)
+            ->setParam('route_id', $easyRoute->getRouteId())
         ;
         return $this->actionFactory->create(
             Forward::class
