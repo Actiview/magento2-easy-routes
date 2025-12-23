@@ -37,7 +37,7 @@ class AbstractEasyRoute implements EasyRouteInterface
     /**
      * Always return a path for store, fallback to a default.
      */
-    public function getPathForStore(?string $store = null): string
+    public function getPathForStore($store = null): string
     {
         try {
             $store = $this->storeManager->getStore($store);
