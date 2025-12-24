@@ -18,5 +18,5 @@ interface EasyRouteInterface
     /**
      * @param null|string|bool|int|\Magento\Store\Api\Data\StoreInterface $storeId
      */
-    public function getPathForStore(?string $store = null): string;
+    public function getPathForStore($store = null): string;
 }
